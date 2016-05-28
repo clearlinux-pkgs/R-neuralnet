@@ -4,7 +4,7 @@
 #
 Name     : R-neuralnet
 Version  : 1.32
-Release  : 2
+Release  : 3
 URL      : https://cran.r-project.org/src/contrib/neuralnet_1.32.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/neuralnet_1.32.tar.gz
 Summary  : Training of neural networks
