@@ -4,7 +4,7 @@
 #
 Name     : R-neuralnet
 Version  : 1.32
-Release  : 1
+Release  : 2
 URL      : https://cran.r-project.org/src/contrib/neuralnet_1.32.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/neuralnet_1.32.tar.gz
 Summary  : Training of neural networks
@@ -34,6 +34,7 @@ mkdir -p %{buildroot}/usr/lib64/R/library
 R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library neuralnet
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
+export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost
