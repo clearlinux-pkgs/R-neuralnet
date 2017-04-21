@@ -4,7 +4,7 @@
 #
 Name     : R-neuralnet
 Version  : 1.33
-Release  : 10
+Release  : 11
 URL      : https://cran.r-project.org/src/contrib/neuralnet_1.33.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/neuralnet_1.33.tar.gz
 Summary  : Training of Neural Networks
@@ -19,10 +19,15 @@ No detailed description available
 %setup -q -c -n neuralnet
 
 %build
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
+export SOURCE_DATE_EPOCH=1492804286
 
 %install
 rm -rf %{buildroot}
+export SOURCE_DATE_EPOCH=1492804286
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -32,13 +37,13 @@ export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export LDFLAGS="$LDFLAGS  -Wl,-z -Wl,relro"
 mkdir -p %{buildroot}/usr/lib64/R/library
-R CMD INSTALL --install-tests --build  -l %{buildroot}/usr/lib64/R/library neuralnet
+R CMD INSTALL --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} --build  -l %{buildroot}/usr/lib64/R/library neuralnet
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
 export LANG=C
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
-export no_proxy=localhost
+export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
 R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library neuralnet
 
@@ -48,6 +53,7 @@ R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/lib
 /usr/lib64/R/library/neuralnet/DESCRIPTION
 /usr/lib64/R/library/neuralnet/INDEX
 /usr/lib64/R/library/neuralnet/Meta/Rd.rds
+/usr/lib64/R/library/neuralnet/Meta/features.rds
 /usr/lib64/R/library/neuralnet/Meta/hsearch.rds
 /usr/lib64/R/library/neuralnet/Meta/links.rds
 /usr/lib64/R/library/neuralnet/Meta/nsInfo.rds
