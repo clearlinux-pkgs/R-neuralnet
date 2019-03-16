@@ -4,13 +4,12 @@
 #
 Name     : R-neuralnet
 Version  : 1.44.2
-Release  : 35
+Release  : 36
 URL      : https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
 Summary  : Training of Neural Networks
 Group    : Development/Tools
 License  : GPL-2.0+
-Requires: R-Deriv
 BuildRequires : R-Deriv
 BuildRequires : buildreq-R
 
@@ -31,10 +30,10 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1550438130
+export SOURCE_DATE_EPOCH=1552778445
 
 %install
-export SOURCE_DATE_EPOCH=1550438130
+export SOURCE_DATE_EPOCH=1552778445
 rm -rf %{buildroot}
 export LANG=C
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -70,8 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc -l %{buildroot}/usr/lib64/R/library neuralnet|| : 
-cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
+R CMD check --no-manual --no-examples --no-codoc  neuralnet || :
 
 
 %files
@@ -96,3 +94,6 @@ cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 /usr/lib64/R/library/neuralnet/help/paths.rds
 /usr/lib64/R/library/neuralnet/html/00Index.html
 /usr/lib64/R/library/neuralnet/html/R.css
+/usr/lib64/R/library/neuralnet/tests/testthat.R
+/usr/lib64/R/library/neuralnet/tests/testthat/test_multiclass.R
+/usr/lib64/R/library/neuralnet/tests/testthat/test_neuralnet.R
