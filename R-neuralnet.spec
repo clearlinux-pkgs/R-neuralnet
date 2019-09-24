@@ -4,12 +4,13 @@
 #
 Name     : R-neuralnet
 Version  : 1.44.2
-Release  : 41
+Release  : 42
 URL      : https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
 Summary  : Training of Neural Networks
 Group    : Development/Tools
 License  : GPL-2.0+
+Requires: R-Deriv
 BuildRequires : R-Deriv
 BuildRequires : buildreq-R
 
@@ -29,13 +30,13 @@ resilient backpropagation with (Riedmiller, 1994) or without
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1552778445
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1569365632
 
 %install
-export SOURCE_DATE_EPOCH=1552778445
+export SOURCE_DATE_EPOCH=1569365632
 rm -rf %{buildroot}
-export LANG=C
+export LANG=C.UTF-8
 export CFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FCFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
 export FFLAGS="$CFLAGS -O3 -flto -fno-semantic-interposition "
@@ -64,12 +65,12 @@ R CMD INSTALL --preclean --install-tests --built-timestamp=${SOURCE_DATE_EPOCH} 
 cp ~/.stash/* %{buildroot}/usr/lib64/R/library/*/libs/ || :
 %{__rm} -rf %{buildroot}%{_datadir}/R/library/R.css
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export _R_CHECK_FORCE_SUGGESTS_=false
-R CMD check --no-manual --no-examples --no-codoc  neuralnet || :
+R CMD check --no-manual --no-examples --no-codoc neuralnet || :
 
 
 %files
