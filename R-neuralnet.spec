@@ -4,7 +4,7 @@
 #
 Name     : R-neuralnet
 Version  : 1.44.2
-Release  : 62
+Release  : 63
 URL      : https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
 Source0  : https://cran.r-project.org/src/contrib/neuralnet_1.44.2.tar.gz
 Summary  : Training of Neural Networks
